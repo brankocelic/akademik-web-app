@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dodaj administratora</title>
+
+<link rel="stylesheet" th:href="@{/css/contact.css}">
+
+</head>
+
+<body>
+
+	<form class="contact-form" th:action="@{/admin/save}" method="post"
+		th:object="${user}" style="top: 45%;">
+
+		<div th:if="*{username}==null">
+
+
+			<p>Username*</p>
+			<input id="email" type="text" th:field="*{username}"
+				th:value="*{username}">
+
+			<p>Password*</p>
+			<input id="email" type="text" th:field="*{password}"
+				th:value="*{password}">
+			
+			<p>Enabled (1 or 0)*</p>
+			<input id="email" type="text" th:field="*{enabled}"
+				th:value="*{enabled}">
+
+			<p>Role*</p>
+			<div style="border: 1px solid gray;">
+			<th:block th:each="authorities , i : ${user.authorities}">
+				<div th:if="${i.index} == 0" style="padding: 0 2%;">
+					<p>
+						ROLE_EMPLOYEE <input type="checkbox" name="mycheckbox" 
+							th:field="*{authorities[__${i.index}__].authority}"
+							th:value="ROLE_EMPLOYEE" />
+					</p>
+
+				</div>
+
+				<div th:if="${i.index} == 1" style="padding: 0 2%;">
+					<p>
+						ROLE_MANAGER  <input type="checkbox" name="mycheckbox" 
+							th:field="*{authorities[__${i.index}__].authority}"
+							th:value="ROLE_MANAGER" />
+					</p>
+				</div>
+
+				<div th:if="${i.index} == 2" style="padding: 0 2%;">
+					<p>
+						ROLE_ADMIN  <input type="checkbox" name="mycheckbox" 
+							th:field="*{authorities[__${i.index}__].authority}"
+							th:value="ROLE_ADMIN" />
+					</p>
+				</div>
+			</th:block>
+			</div>
+
+			<div
+				style="width: 100%; display: flex; justify-content: center; margin-top: 25px;">
+				<input type="submit" value="Pošalji" id="button-submit">
+			</div>
+		</div>
+	</form>
+	
+</body>
+
+</html>

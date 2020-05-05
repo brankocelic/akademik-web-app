@@ -1,0 +1,44 @@
+#left-section{
+  width: 30%;
+  height: auto;
+  float: left;
+  margin-left: 7.5%;
+  margin-right: 4%;
+}
+
+#right-section{
+  width: 50%;
+  height: 100%;
+  float: left;
+  margin-right: 7.5%;
+}
+#map {
+  height: 80%; 
+  width: 100%;
+  margin: 5% 0 0 0;
+  border-radius: 2%;
+
+ }
+
+ #list-item{
+   margin-top: 20px;
+   font-size: 20px;
+ }
+
+ #days-in-a-list li{
+   margin-left: 20px;
+   margin-top: 5px;
+   font-size: 16px;
+   list-style: disc;
+ }
+
+ @media screen and (max-width: 992px) {
+   #left-section{
+     width: 80%
+
+   }
+   #right-section{
+     width: 100%;
+   }
+
+ }

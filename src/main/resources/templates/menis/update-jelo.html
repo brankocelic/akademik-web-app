@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Update jelo</title>
+
+<link rel="stylesheet" th:href="@{/css/contact.css}">
+
+</head>
+
+<body>
+
+
+	<form class="contact-form" th:action="@{/save}" method="post"
+		th:object="${jeloId}" style="top: 40%;">
+
+		<input type="hidden" th:field="*{id}" th:value="*{id}"> 
+		<p>Id*</p>
+		<input id="email" type="text" th:field="*{id}" th:value="*{id}"
+			disabled>
+		
+		<input type="hidden" th:field="*{vrstaJela}" th:value="*{vrstaJela}">
+		<p>Vrsta jela*</p>
+		<input id="email" type="text" th:field="*{vrstaJela}" th:value="*{vrstaJela}"
+			disabled>
+
+
+		<p>Naziv jela*</p>
+		<input id="email" type="text" th:field="*{nazivJela}"
+			th:value="*{nazivJela}">
+
+
+		<p>Cijena*</p>
+		<input id="email" type="text" th:field="*{cijena}"
+			th:value="*{cijena}">
+
+
+		<p>Slika*</p>
+		<input id="email" type="text" th:field="*{slika}" th:value="*{slika}">
+
+
+
+		<div style="width: 100%; display: flex; justify-content: center; margin-top:25px;">
+			<input type="submit" value="Pošalji" id="button-submit">
+		</div>
+
+	</form>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lista administratora</title>
+
+<link rel="stylesheet" th:href="@{/css/lista-jela.css}">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+</head>
+
+<body>
+
+	<h1 style="font-size: 50px; text-align: center; margin-top: 20px;">Lista
+		svih administratora</h1>
+
+
+	<div
+		style="width: auto; height: auto; display: inline-block; text-align: center; position: absolute; left: 50%; transform: translateX(-50%);">
+		<section
+			style="width: auto; margin: 30px auto; padding-bottom: 20px; display: flex; justify-content: space-between;">
+
+			<div>
+
+				<div sec:authorize="hasAnyRole('ROLE_ADMIN')" style="float: left;">
+					<a th:href="@{/admin/dodaj-administratora}"
+						class="btn btn-info btn-sm"> Dodaj administratora </a>
+				</div>
+
+				<div sec:authorize="hasRole('ROLE_ADMIN')"
+					style="float: left; margin-left: 4px;">
+					<a th:href="@{/lista-jela}" class="btn btn-info btn-sm"> Ispis
+						jela </a>
+
+				</div>
+
+			</div>
+
+
+			<form th:action="@{/logout}" method="POST">
+
+				<button type="submit"
+					style="background-color: #28a745; margin: 0; border: none; color: white; padding: 6px; border-radius: 10%;">Logout</button>
+
+			</form>
+
+		</section>
+
+		<table>
+
+
+			<thead>
+				<tr>
+					<th>Ime</th>
+					<th>Lozinka</th>
+					<th>Enabled</th>
+					<th colspan="3">Role</th>
+				</tr>
+			<thead>
+			<tbody>
+
+				<tr th:each="administracija : ${administracije1}">
+					<td th:text="${administracija.username}" />
+					<td th:text="${administracija.password}" />
+					<td th:text="${administracija.enabled}" />
+					<td th:text="${administracija.authority}" />
+
+					<td>
+						<div sec:authorize="hasAnyRole('ROLE_ADMIN')">
+
+							<a
+								th:href="@{/admin/update-administratora(administratorUsername=${administracija.username})}"
+								class="btn btn-info btn-sm"> Update </a>
+
+						</div>
+					</td>
+
+					<td>
+						<div sec:authorize="hasRole('ROLE_ADMIN')">
+
+							<a
+								th:href="@{/admin/delete(administratorRoleId=${administracija.id})}"
+								class="btn btn-danger btn-sm"
+								onclick="if (!(confirm('Are you sure you want to delete this administrator?'))) return false">
+								Delete </a>
+
+						</div>
+					</td>
+					
+
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+</body>
+
+</html>

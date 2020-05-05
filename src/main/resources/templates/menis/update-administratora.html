@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Update administratora</title>
+
+<link rel="stylesheet" th:href="@{/css/contact.css}">
+
+</head>
+
+<body>
+
+	<form class="contact-form" th:action="@{/admin/saveAdministrator}"
+		method="post" th:object="${user}" style="top: 45%;">
+
+		<p>Username*</p>
+		<input type="hidden" th:field="*{username}" th:value="*{username}">
+		<input id="email" type="text" th:field="*{username}"
+			th:value="*{username}" disabled>
+
+		<p>Password*</p>
+		<input id="email" type="text" th:field="*{password}"
+			th:value="*{password}">
+
+		<p>Enabled (1 or 0)*</p>
+		<input id="email" type="text" th:field="*{enabled}"
+			th:value="*{enabled}">
+
+				<p>Role*</p>
+				<div style="border: 1px solid gray;">
+					<th:block th:each="authorities , i : ${user.authorities}">
+
+						<div th:if="${i.index} == 0" style="padding: 0 2%;">
+							
+							<div th:if="${authorities.authority} == null">
+								<p>
+									ROLE_EMPLOYEE <input type="checkbox" name="mycheckbox"
+										th:field="*{authorities[__${i.index}__].authority}"
+										th:value="ROLE_EMPLOYEE" />
+								</p>
+							</div>
+
+							<div th:if="${authorities.authority} != null">
+								
+								<input type="hidden" th:field="*{authorities[__${i.index}__].authority}" th:value="*{authorities[__${i.index}__].authority}">
+								<input type="hidden" th:field="*{authorities[__${i.index}__].id}" th:value="*{authorities[__${i.index}__].id}">
+								
+								<p>
+									ROLE_EMPLOYEE <input type="checkbox" name="mycheckbox"
+										th:field="*{authorities[__${i.index}__].authority}"
+										th:value="ROLE_EMPLOYEE" th:checked="checked" disabled/>
+								</p>
+
+							</div>
+
+						</div>
+						
+						<div th:if="${i.index} == 1" style="padding: 0 2%;">
+							
+							<div th:if="${authorities.authority} == null">
+								<p>
+									ROLE_MANAGER <input type="checkbox" name="mycheckbox"
+										th:field="*{authorities[__${i.index}__].authority}"
+										th:value="ROLE_MANAGER" />
+								</p>
+							</div>
+
+							<div th:if="${authorities.authority} != null">
+							
+								<input type="hidden" th:field="*{authorities[__${i.index}__].authority}" th:value="*{authorities[__${i.index}__].authority}">
+								<input type="hidden" th:field="*{authorities[__${i.index}__].id}" th:value="*{authorities[__${i.index}__].id}">
+								<p>
+									ROLE_MANAGER <input type="checkbox" name="mycheckbox"
+										th:field="*{authorities[__${i.index}__].authority}"
+										th:value="ROLE_MANAGER" th:checked="checked" disabled/>
+								</p>
+
+							</div>
+
+						</div>
+						
+						<div th:if="${i.index} == 2" style="padding: 0 2%;">
+							
+							<div th:if="${authorities.authority} == null">
+								<p>
+									ROLE_ADMIN <input type="checkbox" name="mycheckbox"
+										th:field="*{authorities[__${i.index}__].authority}"
+										th:value="ROLE_ADMIN" />
+								</p>
+							</div>
+
+							<div th:if="${authorities.authority} != null">
+							
+								<input type="hidden" th:field="*{authorities[__${i.index}__].authority}" th:value="*{authorities[__${i.index}__].authority}">
+								<input type="hidden" th:field="*{authorities[__${i.index}__].id}" th:value="*{authorities[__${i.index}__].id}">
+								
+								<p>
+									ROLE_ADMIN <input type="checkbox" name="mycheckbox"
+										th:field="*{authorities[__${i.index}__].authority}"
+										th:value="ROLE_ADMIN" th:checked="checked" disabled/>
+								</p>
+
+							</div>
+
+						</div>
+					</th:block>
+				</div>
+
+
+				<div
+					style="width: 100%; display: flex; justify-content: center; margin-top: 25px;">
+					<input type="submit" value="Pošalji" id="button-submit">
+				</div>
+	</form>
+
+</body>
+
+</html>

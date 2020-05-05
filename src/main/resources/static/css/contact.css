@@ -1,0 +1,64 @@
+.contact-form {
+  width: 80%;
+  position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   margin-left: 10%;
+   margin-bottom: 20px;
+}
+
+.contact-form p {
+  color: gray;
+}
+
+footer{
+  position:fixed; bottom:0;
+}
+
+#subject, #email {
+  width: 95%;
+  height: 50px;
+  padding: 0 2%;
+  font-family: "Comic Sans MS";
+}
+
+#text-area {
+  width: 95%;
+  padding: 10px 2% 0;
+  font-size: 14px;
+  font-family: "Comic Sans MS";
+}
+
+#button-submit {
+  font-size: 30px;
+  font-family: 'Comic Sans MS';
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 992px) {
+  #main-content {
+    width: 78%;
+  }
+
+  #subject, #email {
+    height: 30px;
+  }
+
+  #button-submit {
+    font-size: 20px;}
+}
+
+
+@media screen and (max-height: 600px) {
+
+    .contact-form {
+      position: relative;
+      top: 0%;
+      transform: translateY(0%);
+    }
+	
+    footer{
+      position: relative;
+    }
+    
+}
