@@ -5,6 +5,7 @@ USE `akademik_directory`;
 DROP TABLE IF EXISTS `galerija`;
 DROP TABLE IF EXISTS `jelo`;
 
+
 CREATE TABLE `jelo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `vrsta_jela` varchar(45) not null,
